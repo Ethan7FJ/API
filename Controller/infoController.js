@@ -21,14 +21,13 @@ export default class infoController{
         }
     }
 
-    /* static async store(req,res){
+    static async store(req,res){
         let connectionx;
         try{
             const {title,descripcion,img,leftcolor,rightcolor} = req.body
             connectionx = await mysql.createConnection(dab)
-            const[enviar] = await connectionx.execute("INSERT INTO bob (title,descripcion,img,leftcolor,rightcolor) VALUES(?,?,?,?,?)",(title,descripcion,img,leftcolor,rightcolor))
+            const [enviar] = await connectionx.execute("INSERT INTO bob (title,descripcion,img,leftcolor,rightcolor) VALUES(?,?,?,?,?)",[title,descripcion,img,leftcolor,rightcolor])
             console.log(enviar)
-            res.json(enviar)
         }
         catch(error){
             res.status(500).json({'ERROR AL SUBIR SUS DATOS': error.message})
@@ -38,6 +37,25 @@ export default class infoController{
                 await connectionx.end()
             }
         }
-    } */
+    }
+
+    static async details(req,res){
+        let connectionx;
+        try{
+            const id_b = req.params.id
+            connectionx = await mysql.createConnection(dab)
+            const [AID] = await connectionx.execute("SELECT * FROM bob WHERE id_b = ?",[id_b])
+            console.log(AID)
+            res.status(200).json(AID)
+        }
+        catch(error){
+            res.status(500).json({'ERROR AL SUBIR SUS DATOS': error.message})
+        }
+        finally{
+            if(connectionx){
+                await connectionx.end()
+            }
+        }
+    }
 
 }

@@ -25,7 +25,8 @@
     "@babel/register": "^7.24.6",
     "chai": "^5.1.1",
     "chai-http": "^4.4.0",
-    "faker": "^5.5.3",
+    "faker": "npm:Faker@^0.7.2",
+    "Faker": "^0.7.2",
     "mocha": "^10.4.0",
     "nodemon": "^3.1.3"
   }
