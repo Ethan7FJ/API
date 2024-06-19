@@ -24,9 +24,9 @@ export default class infoController{
     static async store(req,res){
         let connectionx;
         try{
-            const {title,descripcion,img,leftcolor,rightcolor} = req.body
+            const {title,descripcion,img} = req.body
             connectionx = await mysql.createConnection(dab)
-            const [enviar] = await connectionx.execute("INSERT INTO bob (title,descripcion,img,leftcolor,rightcolor) VALUES(?,?,?,?,?)",[title,descripcion,img,leftcolor,rightcolor])
+            const [enviar] = await connectionx.execute("INSERT INTO bob (title,descripcion,img) VALUES(?,?,?)",[title,descripcion,img])
             console.log(enviar)
         }
         catch(error){

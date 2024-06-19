@@ -40,7 +40,7 @@ describe('POST /api/info',()=>{
 
 describe('GET /api/info/:id',()=>{
     it('should GET all info por id',(done)=>{
-        c.request(app).get('/api/info/1').end((err,res)=>{
+        c.request(app).get('/api/info/3').end((err,res)=>{
             expect(err).to.be.null
             expect(res).to.have.status(200)
             expect(res.body[0]).to.have.property('id_b')
